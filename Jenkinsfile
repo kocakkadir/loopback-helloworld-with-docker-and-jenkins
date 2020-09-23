@@ -35,4 +35,8 @@ def label = "helloworld-${UUID.randomUUID().toString()}"
               }
           }
         }
+        catch (e) {
+          currentBuild.result ="FAILED"
+          throw e
+        }
       }
