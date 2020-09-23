@@ -37,7 +37,7 @@ podTemplate(label: label,
                       def SERVICE_NAME = "helloworld-${env_x}"
 
                           sh """
-                          docker build . -t ${SERVICE_NAME}:${GIT_COMMIT} -f Dockerfile-k8s --network host
+                          docker build . -t ${SERVICE_NAME}:${GIT_COMMIT} -f Dockerfile --network host
                           docker tag ${SERVICE_NAME}:${GIT_COMMIT} ${SERVICE_NAME}:latest
 
                           """
