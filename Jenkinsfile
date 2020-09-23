@@ -38,8 +38,7 @@ podTemplate(label: label,
 
                           sh """
                           docker build . -t ${SERVICE_NAME}:${GIT_COMMIT} -f Dockerfile-k8s --network host
-                          docker tag ${SERVICE_NAME}:${GIT_COMMIT} ${DOCKER_IMAGE_REPO}:${GIT_COMMIT}
-                          docker tag ${SERVICE_NAME}:${GIT_COMMIT} ${DOCKER_IMAGE_REPO}:latest
+                          docker tag ${SERVICE_NAME}:${GIT_COMMIT} ${SERVICE_NAME}:latest
 
                           """
                   }
