@@ -1,5 +1,16 @@
 def label = "helloworld-${UUID.randomUUID().toString()}"
 
+podTemplate(label: label,
+            containers: [
+                    containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+                    containerTemplate(name: 'nodejs', image: '255114580789.dkr.ecr.eu-west-1.amazonaws.com/nodejs', command: 'cat', ttyEnabled: true)
+
+            ],
+            volumes: [
+                    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+            ])
+{
+
     node(label) {
         properties([disableConcurrentBuilds()])
         try {
@@ -40,3 +51,4 @@ def label = "helloworld-${UUID.randomUUID().toString()}"
           throw e
         }
       }
+    }
